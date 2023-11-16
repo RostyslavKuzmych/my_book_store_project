@@ -34,7 +34,20 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookById(Long id) {
-        return bookRepository.getBookById(id)
+        return bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Can't get book by id " + id));
+    }
+
+    @Override
+    public Book updateBook(Long id, Book inputBook) {
+        bookRepository.updateBook(id, inputBook.getAuthor(), inputBook.getTitle(),
+                inputBook.getCoverImage(), inputBook.getDescription(), inputBook.getPrice());
+        return bookRepository
+                .findById(id).orElseThrow(() -> new EntityNotFoundException("Can't find book"));
+    }
+
+    @Override
+    public void deleteBookById(Long id) {
+        bookRepository.deleteById(id);
     }
 }
