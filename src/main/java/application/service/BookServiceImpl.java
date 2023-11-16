@@ -43,7 +43,7 @@ public class BookServiceImpl implements BookService {
         bookRepository.updateBook(id, inputBook.getAuthor(), inputBook.getTitle(),
                 inputBook.getCoverImage(), inputBook.getDescription(), inputBook.getPrice());
         return bookRepository
-                .findById(id).orElseThrow(() -> new EntityNotFoundException("Can't find book"));
+                .findById(id).orElseThrow(() -> new EntityNotFoundException("Can't2 find book"));
     }
 
     @Override
